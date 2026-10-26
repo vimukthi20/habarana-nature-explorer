@@ -1548,26 +1548,193 @@ textarea.form-control {
 }
 
 @media (max-width: 768px) {
+  /* Ultra-Clean Top Announcement Bar */
+  .top-bar {
+    padding: 6px 0;
+    font-size: 0.78rem;
+  }
+  .top-bar-content {
+    gap: 8px;
+    justify-content: space-between;
+  }
+  .top-bar-left span:not(.top-pill) {
+    display: none; /* Hide verbose location text on small screens */
+  }
+  .top-bar-left {
+    gap: 6px;
+  }
+  .top-bar-right {
+    gap: 10px;
+  }
+  .currency-toggle {
+    padding: 2px 6px;
+  }
+  .currency-toggle select {
+    font-size: 0.75rem;
+  }
+
+  /* Sleek, Non-Wrapping Sticky Header */
+  .site-header {
+    background: rgba(15, 43, 29, 0.98);
+  }
+  .nav-wrapper {
+    height: 60px;
+    padding: 0 4px;
+  }
+
+  .site-logo {
+    gap: 10px;
+    max-width: calc(100% - 96px); /* Prevent squishing against icons */
+    flex-shrink: 1;
+    overflow: hidden;
+  }
+  .logo-badge {
+    width: 36px;
+    height: 36px;
+    border-radius: 8px;
+    flex-shrink: 0;
+  }
+  .logo-badge svg {
+    width: 20px;
+    height: 20px;
+  }
+  .logo-text {
+    overflow: hidden;
+  }
+  .logo-title {
+    font-size: 0.92rem;
+    line-height: 1.15;
+    letter-spacing: -0.2px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .logo-subtitle {
+    font-size: 0.62rem;
+    letter-spacing: 0.5px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  /* Actions & Mobile Buttons */
+  .nav-actions {
+    gap: 8px;
+    flex-shrink: 0;
+  }
+  .nav-actions .btn-header-cta {
+    display: none; /* Hidden on mobile header to remove clutter; placed in drawer */
+  }
+  .search-trigger-btn {
+    width: 36px;
+    height: 36px;
+  }
+  .mobile-menu-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 38px;
+    height: 38px;
+    padding: 0;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+  }
+  .mobile-menu-btn svg {
+    width: 22px;
+    height: 22px;
+  }
+
+  /* Luxury Mobile Slide-Down Drawer */
   .nav-links {
     position: fixed;
-    top: 74px;
+    top: 60px;
     left: 0;
     right: 0;
-    background: var(--primary-dark);
+    background: #0d2318;
+    background: linear-gradient(180deg, rgba(13, 35, 24, 0.99) 0%, rgba(7, 21, 14, 0.99) 100%);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
     flex-direction: column;
-    padding: 24px;
-    box-shadow: 0 20px 30px rgba(0, 0, 0, 0.4);
+    padding: 16px 20px 24px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.7);
     display: none;
-    gap: 16px;
+    gap: 6px;
+    border-bottom: 2px solid var(--accent-gold);
+    max-height: calc(100vh - 60px);
+    overflow-y: auto;
+    z-index: 1001;
   }
   .nav-links.active {
     display: flex;
+    animation: slideDownNav 0.25s ease-out forwards;
   }
-  .mobile-menu-btn {
-    display: block;
+
+  .nav-link {
+    font-size: 0.92rem;
+    padding: 12px 14px;
+    width: 100%;
+    border-radius: 8px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
   }
+  .nav-link::after {
+    display: none !important;
+  }
+  .nav-link.active {
+    background: rgba(233, 196, 106, 0.12);
+    color: var(--accent-gold);
+    border-left: 3px solid var(--accent-gold);
+  }
+
+  .mobile-menu-footer-cta {
+    margin-top: 12px;
+    padding-top: 14px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+  }
+
+  /* Hero Section on Mobile */
+  .hero-section {
+    min-height: 440px;
+    padding: 40px 0;
+  }
+  .hero-tag {
+    font-size: 0.75rem;
+    padding: 4px 12px;
+    margin-bottom: 14px;
+  }
+  .hero-title {
+    font-size: 2.1rem;
+    margin-bottom: 14px;
+  }
+  .hero-description {
+    font-size: 0.95rem;
+    margin-bottom: 24px;
+  }
+  .hero-cta-group {
+    flex-direction: column;
+    width: 100%;
+    gap: 10px;
+  }
+  .hero-cta-group .btn {
+    width: 100%;
+  }
+
+  /* Grids & Cards */
   .spotlight-grid {
     grid-template-columns: 1fr;
+  }
+  .spotlight-content {
+    padding: 24px 20px;
+  }
+  .spotlight-image {
+    min-height: 240px;
   }
   .grid-3, .grid-4 {
     grid-template-columns: 1fr;
@@ -1581,17 +1748,37 @@ textarea.form-control {
   .footer-grid {
     grid-template-columns: 1fr;
   }
-  .hero-section {
-    min-height: 480px;
-    padding: 60px 0;
-  }
   .callout-banner {
-    padding: 30px 20px;
+    padding: 28px 20px;
+  }
+
+  /* Floating Analytics Inspector on Mobile */
+  .analytics-widget {
+    bottom: 12px;
+    left: 12px;
+  }
+  .analytics-toggle-btn {
+    padding: 6px 12px;
+    font-size: 0.72rem;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.5);
   }
   .analytics-panel {
-    left: 12px;
-    right: 12px;
+    left: 10px;
+    right: 10px;
     width: auto;
-    bottom: 74px;
+    bottom: 60px;
+    max-height: 70vh;
   }
 }
+
+@keyframes slideDownNav {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
