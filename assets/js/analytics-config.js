@@ -12,7 +12,7 @@ const ANALYTICS_CONFIG = {
   gtmId: localStorage.getItem('tourism_gtm_id') || 'GTM-HNE2026',
 
   // Google Analytics 4 (GA4) Measurement ID (Format: G-XXXXXXXXXX)
-  ga4Id: localStorage.getItem('tourism_ga4_id') || 'G-HNE9876543',
+  ga4Id: localStorage.getItem('tourism_ga4_id') || 'G-RY10B918S2',
 
   // Meta Pixel (Facebook Pixel) ID (15-16 digit numeric ID)
   metaPixelId: localStorage.getItem('tourism_meta_pixel_id') || '3829481729482910',

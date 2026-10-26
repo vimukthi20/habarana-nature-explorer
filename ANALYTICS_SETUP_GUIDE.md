@@ -52,7 +52,7 @@ GTM is loaded in the `<head>` and `<body>` across all five HTML pages using the 
   - `DLV - estimated_value` (Data Layer Variable: `estimated_value`)
 
 ### 2.2 Google Analytics 4 (GA4) Implementation
-GA4 is integrated via `gtag.js` with measurement ID `G-HNE9876543` (configurable via `analytics-config.js` or the on-page inspector).
+GA4 is integrated via `gtag.js` with measurement ID `G-RY10B918S2` (configurable via `analytics-config.js` or the on-page inspector).
 
 #### Events Monitored:
 | Event Name | Type | Trigger Condition | Parameters Captured |
