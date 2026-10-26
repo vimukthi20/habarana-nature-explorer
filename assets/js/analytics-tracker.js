@@ -358,15 +358,46 @@
       });
     });
 
-    // Save custom tracking IDs
+    // Save custom tracking IDs dynamically without errors
     document.getElementById('saveTrackingIdsBtn').addEventListener('click', function () {
       const customGa4 = document.getElementById('inputCustomGA4').value.trim();
       const customGtm = document.getElementById('inputCustomGTM').value.trim();
-      if (customGa4) localStorage.setItem('tourism_ga4_id', customGa4);
-      if (customGtm) localStorage.setItem('tourism_gtm_id', customGtm);
+
+      if (customGa4) {
+        localStorage.setItem('tourism_ga4_id', customGa4);
+        if (window.ANALYTICS_CONFIG) window.ANALYTICS_CONFIG.ga4Id = customGa4;
+        
+        // Dynamically load & configure the new Google Analytics Measurement ID
+        if (typeof window.gtag === 'function') {
+          window.gtag('config', customGa4);
+          const gaScript = document.createElement('script');
+          gaScript.async = true;
+          gaScript.src = 'https://www.googletagmanager.com/gtag/js?id=' + customGa4;
+          document.head.appendChild(gaScript);
+        }
+      }
+
+      if (customGtm) {
+        localStorage.setItem('tourism_gtm_id', customGtm);
+        if (window.ANALYTICS_CONFIG) window.ANALYTICS_CONFIG.gtmId = customGtm;
+      }
+
       document.getElementById('dispGa4Id').textContent = customGa4 || config.ga4Id;
       document.getElementById('dispGtmId').textContent = customGtm || config.gtmId;
-      alert('Tracking IDs updated! They will be used across your browsing session.');
+      
+      if (window.showToast) {
+        window.showToast(`Measurement ID updated to ${customGa4 || config.ga4Id}! Data is now streaming to your GA4 account.`);
+      } else {
+        alert(`Measurement ID updated to ${customGa4 || config.ga4Id}! Data is now streaming to your GA4 account.`);
+      }
+
+      // Fire a test verification event immediately to verify connection in GA4 Realtime
+      if (window.trackTourismEvent) {
+        window.trackTourismEvent('analytics_id_verified', {
+          active_measurement_id: customGa4 || config.ga4Id,
+          timestamp: new Date().toISOString()
+        });
+      }
     });
 
     // Simulate triggers
