@@ -11,23 +11,22 @@ document.addEventListener('DOMContentLoaded', function () {
   const mainNav = document.getElementById('mainNav');
 
   if (mobileToggleBtn && mainNav) {
-    // Add mobile booking & WhatsApp buttons inside the drawer if not already present
-    if (!mainNav.querySelector('.mobile-menu-footer-cta')) {
-      const ctaDiv = document.createElement('div');
-      ctaDiv.className = 'mobile-menu-footer-cta';
-      ctaDiv.innerHTML = `
-        <button class="btn btn-primary btn-block" data-open-booking="Mobile Drawer Booking" style="padding:12px 18px; font-size:0.88rem;">
-          <span>Book Tour Package</span>
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-        </button>
-        <button class="btn btn-whatsapp btn-sm btn-block" onclick="window.open('https://wa.me/94771234567?text=Hi%20Habarana%20Nature%20Explorer,%20I%20would%20like%20to%20inquire%20about%20tours', '_blank')">
-          <span>WhatsApp Quick Chat</span>
-        </button>
-      `;
-      mainNav.appendChild(ctaDiv);
-    }
-
     mobileToggleBtn.addEventListener('click', function () {
+      // Lazily inject mobile drawer CTAs only when mobile menu is toggled
+      if (!mainNav.querySelector('.mobile-menu-footer-cta')) {
+        const ctaDiv = document.createElement('div');
+        ctaDiv.className = 'mobile-menu-footer-cta';
+        ctaDiv.innerHTML = `
+          <button class="btn btn-primary btn-block" data-open-booking="Mobile Drawer Booking" style="padding:12px 18px; font-size:0.88rem;">
+            <span>Book Tour Package</span>
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </button>
+          <button class="btn btn-whatsapp btn-sm btn-block" onclick="window.open('https://wa.me/94771234567?text=Hi%20Habarana%20Nature%20Explorer,%20I%20would%20like%20to%20inquire%20about%20tours', '_blank')">
+            <span>WhatsApp Quick Chat</span>
+          </button>
+        `;
+        mainNav.appendChild(ctaDiv);
+      }
       mainNav.classList.toggle('active');
       const isExpanded = mainNav.classList.contains('active');
       mobileToggleBtn.setAttribute('aria-expanded', isExpanded);

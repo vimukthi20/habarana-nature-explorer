@@ -184,16 +184,17 @@ ul {
 }
 
 /* ==========================================================================
-   HEADER & NAVBAR
+   HEADER & NAVBAR (Clean, Modern, Luxury Aesthetic)
    ========================================================================== */
 .site-header {
   position: sticky;
   top: 0;
   z-index: 1000;
-  background: rgba(27, 67, 50, 0.95);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  background: rgba(13, 35, 24, 0.94);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.2);
   transition: all var(--transition-normal);
 }
 
@@ -201,7 +202,7 @@ ul {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 74px;
+  height: 72px;
 }
 
 .site-logo {
@@ -212,20 +213,21 @@ ul {
 }
 
 .logo-badge {
-  width: 44px;
-  height: 44px;
+  width: 42px;
+  height: 42px;
   background: linear-gradient(135deg, var(--accent-gold), var(--accent-ochre));
-  border-radius: var(--radius-md);
+  border-radius: 10px;
   display: flex;
   align-items: center;
   justify-content: center;
   color: var(--primary-dark);
-  box-shadow: 0 4px 12px rgba(233, 196, 106, 0.3);
+  box-shadow: 0 4px 14px rgba(233, 196, 106, 0.25);
+  flex-shrink: 0;
 }
 
 .logo-badge svg {
-  width: 26px;
-  height: 26px;
+  width: 24px;
+  height: 24px;
 }
 
 .logo-text {
@@ -235,18 +237,18 @@ ul {
 
 .logo-title {
   font-family: var(--font-heading);
-  font-size: 1.25rem;
+  font-size: 1.15rem;
   font-weight: 800;
   color: #ffffff;
-  letter-spacing: -0.3px;
-  line-height: 1.1;
+  letter-spacing: 0.3px;
+  line-height: 1.15;
   text-transform: uppercase;
 }
 
 .logo-subtitle {
-  font-size: 0.72rem;
+  font-size: 0.68rem;
   color: var(--accent-gold);
-  letter-spacing: 1px;
+  letter-spacing: 1.2px;
   font-weight: 600;
   text-transform: uppercase;
 }
@@ -254,36 +256,50 @@ ul {
 .nav-links {
   display: flex;
   align-items: center;
-  gap: 24px;
+  gap: 28px;
 }
 
 .nav-link {
   font-family: var(--font-heading);
   font-size: 0.88rem;
   font-weight: 600;
-  color: rgba(255, 255, 255, 0.88);
-  padding: 8px 12px;
-  border-radius: var(--radius-sm);
+  color: rgba(255, 255, 255, 0.85);
+  padding: 8px 4px;
   text-transform: uppercase;
   letter-spacing: 0.6px;
-  transition: all var(--transition-fast);
+  transition: color var(--transition-fast);
   position: relative;
 }
 
-.nav-link:hover, .nav-link.active {
+.nav-link:hover {
   color: #ffffff;
-  background: rgba(255, 255, 255, 0.12);
 }
 
-.nav-link.active::after {
+.nav-link::after {
   content: '';
   position: absolute;
   bottom: 0;
-  left: 12px;
-  right: 12px;
+  left: 0;
+  width: 100%;
   height: 2px;
   background: var(--accent-gold);
   border-radius: var(--radius-full);
+  transform: scaleX(0);
+  transform-origin: center;
+  transition: transform 0.25s ease;
+}
+
+.nav-link:hover::after, .nav-link.active::after {
+  transform: scaleX(1);
+}
+
+.nav-link.active {
+  color: #ffffff;
+}
+
+/* Strictly hide mobile CTA buttons on desktop */
+.mobile-menu-footer-cta {
+  display: none !important;
 }
 
 .nav-actions {
@@ -293,12 +309,12 @@ ul {
 }
 
 .search-trigger-btn {
-  background: rgba(255, 255, 255, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.14);
   color: white;
-  width: 40px;
-  height: 40px;
-  border-radius: var(--radius-full);
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -307,7 +323,8 @@ ul {
 }
 
 .search-trigger-btn:hover {
-  background: rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.18);
+  border-color: var(--accent-gold);
   transform: translateY(-1px);
 }
 
@@ -315,23 +332,23 @@ ul {
   background: linear-gradient(135deg, var(--accent-gold), var(--accent-ochre));
   color: var(--primary-dark);
   font-weight: 700;
-  font-size: 0.85rem;
-  padding: 10px 20px;
+  font-size: 0.82rem;
+  padding: 9px 18px;
   border-radius: var(--radius-full);
   text-transform: uppercase;
   letter-spacing: 0.6px;
-  box-shadow: 0 4px 14px rgba(233, 196, 106, 0.3);
+  box-shadow: 0 4px 14px rgba(233, 196, 106, 0.25);
   transition: all var(--transition-fast);
   border: none;
   cursor: pointer;
   display: inline-flex;
   align-items: center;
-  gap: 8px;
+  gap: 6px;
 }
 
 .btn-header-cta:hover {
   transform: translateY(-2px);
-  box-shadow: 0 6px 18px rgba(233, 196, 106, 0.45);
+  box-shadow: 0 6px 18px rgba(233, 196, 106, 0.4);
 }
 
 .mobile-menu-btn {
